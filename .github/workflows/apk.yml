@@ -22,8 +22,12 @@ jobs:
 
       - name: Preparar arquivos do app
         run: |
+          IDX=$(find . -name index.html -not -path './.git/*' -not -path './app/*' | head -1)
+          if [ -z "$IDX" ]; then echo "ERRO: index.html nao encontrado no repositorio"; exit 1; fi
+          DIR=$(dirname "$IDX")
+          echo "Site encontrado em: $DIR"
           mkdir -p app/www
-          find . -maxdepth 1 -type f ! -name '.*' -exec cp {} app/www/ \;
+          find "$DIR" -maxdepth 1 -type f ! -name '.*' -exec cp {} app/www/ \;
           ls -la app/www
 
       - name: Criar projeto Android
