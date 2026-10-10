@@ -22,8 +22,10 @@ jobs:
 
       - name: Preparar arquivos do app
         run: |
+          mkdir -p _site
+          for z in $(find . -name '*.zip' -not -path './.git/*'); do unzip -o -q "$z" -d _site; done
           IDX=$(find . -name index.html -not -path './.git/*' -not -path './app/*' | head -1)
-          if [ -z "$IDX" ]; then echo "ERRO: index.html nao encontrado no repositorio"; exit 1; fi
+          if [ -z "$IDX" ]; then echo "ERRO: index.html nao encontrado"; exit 1; fi
           DIR=$(dirname "$IDX")
           echo "Site encontrado em: $DIR"
           mkdir -p app/www
@@ -59,4 +61,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 3visao-apk
-          path: app/android/app/build/outputs/apk/debug/app-debug.apk
+          path: app/android/app/build/outputs/apk
