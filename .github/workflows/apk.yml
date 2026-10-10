@@ -23,4 +23,105 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Assinatura f
+      - name: Assinatura fixa do app
+        run: |
+          mkdir -p ~/.android
+          base64 -d > ~/.android/debug.keystore <<'CHAVE'
+          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
+          CHAVE
+
+      - name: Preparar arquivos do app
+        run: |
+          mkdir -p _site
+          for z in $(find . -name '*.zip' -not -path './.git/*'); do unzip -o -q "$z" -d _site; done
+          IDX=$(find ./_site -name index.html | head -1)
+          [ -z "$IDX" ] && IDX=$(find . -name index.html -not -path './.git/*' -not -path './app/*' | head -1)
+          if [ -z "$IDX" ]; then echo "ERRO: index.html nao encontrado"; exit 1; fi
+          DIR=$(dirname "$IDX")
+          mkdir -p app/www
+          find "$DIR" -maxdepth 1 -type f ! -name '.*' -exec cp {} app/www/ \;
+          ls -la app/www
+
+      - name: Criar projeto Android
+        working-directory: app
+        run: |
+          npm init -y
+          npm install @capacitor/core@6.1.2 @capacitor/cli@6.1.2 @capacitor/android@6.1.2
+          npx cap init "3ª Visão" "br.com.terceiravisao.app" --web-dir www
+          npx cap add android
+          sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#&\n    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />\n    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />#' android/app/src/main/AndroidManifest.xml
+          sed -i "s/versionCode 1/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
+          npx cap sync android
+
+      - name: Colocar o ícone da 3ª Visão
+        run: |
+          ICON=$(find "$GITHUB_WORKSPACE/app/www" -name 'icon-512.png' | head -1)
+          if [ -z "$ICON" ]; then echo "Sem icone, usando o padrao"; exit 0; fi
+          RES="$GITHUB_WORKSPACE/app/android/app/src/main/res"
+          rm -rf "$RES/mipmap-anydpi-v26"
+          for d in "$RES"/mipmap-*; do
+            cp "$ICON" "$d/ic_launcher.png"
+            cp "$ICON" "$d/ic_launcher_round.png"
+            cp "$ICON" "$d/ic_launcher_foreground.png"
+          done
+
+      - name: Gerar o APK
+        working-directory: app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/3visao.apk"
+
+      - name: Publicar na Release (Obtainium)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: 3ª Visão v1.0.${{ github.run_number }}
+          files: 3visao.apk
