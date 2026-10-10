@@ -37,28 +37,4 @@ jobs:
         run: |
           npm init -y
           npm install @capacitor/core@6.1.2 @capacitor/cli@6.1.2 @capacitor/android@6.1.2
-          npx cap init "3ª Visão" "br.com.terceiravisao.app" --web-dir www
-          npx cap add android
-          npx cap sync android
-
-      - name: Colocar o ícone da 3ª Visão
-        working-directory: app/android/app/src/main/res
-        run: |
-          rm -rf mipmap-anydpi-v26
-          for d in mipmap-*; do
-            cp ../../../../../www/icon-192.png "$d/ic_launcher.png"
-            cp ../../../../../www/icon-192.png "$d/ic_launcher_round.png"
-            cp ../../../../../www/icon-192.png "$d/ic_launcher_foreground.png"
-          done
-
-      - name: Gerar o APK
-        working-directory: app/android
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug
-
-      - name: Disponibilizar o APK para download
-        uses: actions/upload-artifact@v4
-        with:
-          name: 3visao-apk
-          path: app/android/app/build/outputs/apk
+          npx cap init "3ª Visão" "br.com.terceiravisao.app" -
